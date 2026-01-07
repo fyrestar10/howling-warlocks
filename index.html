@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <title>Howling Warlocks Productions</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Howling Warlocks — a film collective. Site coming soon." />
+  <meta name="description" content="Howling Warlocks Productions — site coming soon." />
 
   <style>
     :root {
@@ -24,10 +24,25 @@
     body {
       font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
       color: var(--mist);
+
+      /* Navy + Night background (no true black) */
       background:
-        radial-gradient(900px 600px at 15% 10%, rgba(38,49,79,0.55), transparent 60%),
-        radial-gradient(800px 500px at 85% 20%, rgba(227,240,246,0.12), transparent 60%),
-        linear-gradient(180deg, var(--night), #0b0c10 75%);
+        radial-gradient(
+          900px 600px at 20% 15%,
+          rgba(38, 49, 79, 0.75),
+          transparent 60%
+        ),
+        radial-gradient(
+          700px 500px at 80% 25%,
+          rgba(227, 240, 246, 0.10),
+          transparent 65%
+        ),
+        linear-gradient(
+          180deg,
+          var(--navy),
+          var(--night) 65%
+        );
+
       display: grid;
       place-items: center;
       overflow: hidden;
@@ -40,10 +55,10 @@
       inset: 0;
       pointer-events: none;
       background-image:
-        radial-gradient(circle at 25% 35%, rgba(255,255,255,0.06) 0 1px, transparent 2px),
-        radial-gradient(circle at 65% 55%, rgba(255,255,255,0.05) 0 1px, transparent 2px);
-      background-size: 260px 260px, 300px 300px;
-      opacity: 0.25;
+        radial-gradient(circle at 30% 40%, rgba(255,255,255,0.05) 0 1px, transparent 2px),
+        radial-gradient(circle at 70% 60%, rgba(255,255,255,0.04) 0 1px, transparent 2px);
+      background-size: 280px 280px, 320px 320px;
+      opacity: 0.22;
       mix-blend-mode: overlay;
     }
 
@@ -70,7 +85,7 @@
       background: linear-gradient(
         90deg,
         transparent,
-        rgba(227,240,246,0.7),
+        rgba(227,240,246,0.8),
         transparent
       );
     }
@@ -79,7 +94,7 @@
       margin: 0;
       font-size: 16px;
       line-height: 1.6;
-      color: rgba(227,240,246,0.75);
+      color: rgba(227,240,246,0.78);
     }
 
     .whisper {
@@ -105,12 +120,12 @@
 
 <body>
   <main>
-    <h1>Howling Warlocks Productions</h1>
+    <h1>Howling Warlocks<br/>Productions</h1>
 
     <div class="divider"></div>
 
     <p>
-      Site coming soon.
+      Atlanta-Based Film Production.<br />
     </p>
 
     <div class="whisper">Coming soon</div>
