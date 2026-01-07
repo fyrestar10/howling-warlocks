@@ -1,192 +1,228 @@
+/* --------------------------------------------------
+   Base reset & globals
+-------------------------------------------------- */
 
-    :root {
-      --navy: #26314f;
-      --night: #0f1015;
-      --mist: #e3f0f6;
-      --white: #ffffff;
-    }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-    * { box-sizing: border-box; }
+html,
+body {
+  height: 100%;
+}
 
-    html, body {
-      height: 100%;
-      margin: 0;
-    }
+body {
+  font-family: 'Montserrat', sans-serif;
+  color: rgba(227, 240, 246, 0.9);
+  background: radial-gradient(
+      ellipse at top,
+      #26314f 0%,
+      #0f1015 70%
+    );
+  overflow-x: hidden;
+}
 
-    body {
-      font-family: "Montserrat", system-ui, sans-serif;
-      color: var(--mist);
-      background:
-        radial-gradient(1100px 800px at 18% 12%, rgba(38,49,79,0.95), transparent 60%),
-        radial-gradient(900px 700px at 82% 22%, rgba(227,240,246,0.16), transparent 65%),
-        linear-gradient(180deg, var(--navy), var(--night) 72%);
-      display: grid;
-      place-items: center;
-      overflow: hidden;
-      position: relative;
-    }
 
-    /* ===== STARFIELD ===== */
+/* --------------------------------------------------
+   Navigation
+-------------------------------------------------- */
 
-    /* FAR STARS */
-    body::before {
-      content: "";
-      position: fixed;
-      inset: -25%;
-      pointer-events: none;
-      background-image:
-        radial-gradient(circle at 4% 8%, rgba(227,240,246,0.55) 0 1px, transparent 2px),
-        radial-gradient(circle at 9% 28%, rgba(227,240,246,0.6) 0 1.25px, transparent 2px),
-        radial-gradient(circle at 14% 55%, rgba(227,240,246,0.5) 0 1px, transparent 2px),
-        radial-gradient(circle at 19% 78%, rgba(227,240,246,0.6) 0 1.25px, transparent 2px),
+.nav {
+  position: fixed;
+  top: 24px;
+  right: 32px;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  z-index: 10;
 
-        radial-gradient(circle at 26% 14%, rgba(227,240,246,0.55) 0 1px, transparent 2px),
-        radial-gradient(circle at 31% 42%, rgba(227,240,246,0.65) 0 1.5px, transparent 2px),
-        radial-gradient(circle at 36% 66%, rgba(227,240,246,0.55) 0 1px, transparent 2px),
-        radial-gradient(circle at 41% 86%, rgba(227,240,246,0.6) 0 1.25px, transparent 2px),
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
 
-        radial-gradient(circle at 48% 10%, rgba(227,240,246,0.6) 0 1.25px, transparent 2px),
-        radial-gradient(circle at 53% 34%, rgba(227,240,246,0.55) 0 1px, transparent 2px),
-        radial-gradient(circle at 58% 58%, rgba(227,240,246,0.6) 0 1.25px, transparent 2px),
-        radial-gradient(circle at 63% 82%, rgba(227,240,246,0.5) 0 1px, transparent 2px),
+.nav a {
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
 
-        radial-gradient(circle at 70% 18%, rgba(227,240,246,0.65) 0 1.5px, transparent 2px),
-        radial-gradient(circle at 75% 44%, rgba(227,240,246,0.6) 0 1.25px, transparent 2px),
-        radial-gradient(circle at 80% 70%, rgba(227,240,246,0.55) 0 1px, transparent 2px),
-        radial-gradient(circle at 85% 90%, rgba(227,240,246,0.6) 0 1.25px, transparent 2px),
+.nav a:hover {
+  opacity: 1;
+}
 
-        radial-gradient(circle at 92% 26%, rgba(227,240,246,0.55) 0 1px, transparent 2px),
-        radial-gradient(circle at 96% 52%, rgba(227,240,246,0.6) 0 1.25px, transparent 2px);
+/* Contact pill */
+.nav .nav-cta {
+  padding: 6px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  border-radius: 999px;
+  font-size: 11px;
+}
 
-      opacity: 0.45;
-      animation: driftSlow 110s linear infinite;
-    }
+.nav .nav-cta:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
 
-    /* MID STARS */
-    body::after {
-      content: "";
-      position: fixed;
-      inset: -25%;
-      pointer-events: none;
-      background-image:
-        radial-gradient(circle at 8% 38%, rgba(227,240,246,0.8) 0 1.75px, transparent 3px),
-        radial-gradient(circle at 14% 18%, rgba(227,240,246,0.75) 0 1.5px, transparent 3px),
-        radial-gradient(circle at 20% 62%, rgba(227,240,246,0.85) 0 2px, transparent 3px),
 
-        radial-gradient(circle at 28% 28%, rgba(227,240,246,0.7) 0 1.5px, transparent 3px),
-        radial-gradient(circle at 34% 82%, rgba(227,240,246,0.9) 0 2px, transparent 3px),
-        radial-gradient(circle at 40% 48%, rgba(227,240,246,0.75) 0 1.5px, transparent 3px),
+/* --------------------------------------------------
+   Star layers (intentional night sky)
+-------------------------------------------------- */
 
-        radial-gradient(circle at 48% 14%, rgba(227,240,246,0.85) 0 2px, transparent 3px),
-        radial-gradient(circle at 54% 66%, rgba(227,240,246,0.75) 0 1.75px, transparent 3px),
-        radial-gradient(circle at 60% 36%, rgba(227,240,246,0.8) 0 1.75px, transparent 3px),
+.stars,
+.stars2,
+.stars3 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  background-repeat: repeat;
+  pointer-events: none;
+  z-index: 0;
+}
 
-        radial-gradient(circle at 68% 76%, rgba(227,240,246,0.7) 0 1.5px, transparent 3px),
-        radial-gradient(circle at 74% 22%, rgba(227,240,246,0.85) 0 2px, transparent 3px),
-        radial-gradient(circle at 80% 54%, rgba(227,240,246,0.75) 0 1.75px, transparent 3px),
+.stars {
+  background-image:
+    radial-gradient(#e3f0f6 1px, transparent 1px);
+  background-size: 120px 120px;
+  opacity: 0.35;
+  animation: drift 180s linear infinite;
+}
 
-        radial-gradient(circle at 88% 18%, rgba(227,240,246,0.8) 0 1.75px, transparent 3px),
-        radial-gradient(circle at 94% 72%, rgba(227,240,246,0.9) 0 2px, transparent 3px);
+.stars2 {
+  background-image:
+    radial-gradient(#e3f0f6 1.2px, transparent 1.2px);
+  background-size: 180px 180px;
+  opacity: 0.25;
+  animation: driftReverse 260s linear infinite;
+}
 
-      opacity: 0.35;
-      animation: driftMedium 75s linear infinite;
-    }
+.stars3 {
+  background-image:
+    radial-gradient(#e3f0f6 1.4px, transparent 1.4px);
+  background-size: 260px 260px;
+  opacity: 0.18;
+  animation: drift 340s linear infinite;
+}
 
-    /* NEAR STARS */
-    .stars-near {
-      position: fixed;
-      inset: -25%;
-      pointer-events: none;
-      background-image:
-        radial-gradient(circle at 10% 58%, rgba(227,240,246,0.95) 0 2.25px, transparent 4px),
-        radial-gradient(circle at 18% 18%, rgba(227,240,246,0.85) 0 2px, transparent 4px),
-        radial-gradient(circle at 26% 72%, rgba(227,240,246,0.9) 0 2.25px, transparent 4px),
 
-        radial-gradient(circle at 36% 32%, rgba(227,240,246,0.8) 0 2px, transparent 4px),
-        radial-gradient(circle at 44% 88%, rgba(227,240,246,0.95) 0 2.25px, transparent 4px),
+/* --------------------------------------------------
+   Parallax animations
+-------------------------------------------------- */
 
-        radial-gradient(circle at 54% 22%, rgba(227,240,246,0.85) 0 2px, transparent 4px),
-        radial-gradient(circle at 62% 62%, rgba(227,240,246,0.9) 0 2.25px, transparent 4px),
+@keyframes drift {
+  from {
+    transform: translate(0, 0);
+  }
+  to {
+    transform: translate(-300px, -200px);
+  }
+}
 
-        radial-gradient(circle at 72% 42%, rgba(227,240,246,0.8) 0 2px, transparent 4px),
-        radial-gradient(circle at 80% 78%, rgba(227,240,246,0.95) 0 2.25px, transparent 4px),
+@keyframes driftReverse {
+  from {
+    transform: translate(0, 0);
+  }
+  to {
+    transform: translate(300px, 200px);
+  }
+}
 
-        radial-gradient(circle at 90% 28%, rgba(227,240,246,0.85) 0 2px, transparent 4px);
 
-      opacity: 0.25;
-      animation: driftFast 50s linear infinite;
-      z-index: 0;
-    }
+/* --------------------------------------------------
+   Main content
+-------------------------------------------------- */
 
-    /* ===== PARALLAX ANIMATION ===== */
-    @keyframes driftSlow {
-      from { transform: translateY(0); }
-      to   { transform: translateY(-95px); }
-    }
+main {
+  position: relative;
+  z-index: 2;
+  min-height: 100vh;
 
-    @keyframes driftMedium {
-      from { transform: translateY(0); }
-      to   { transform: translateY(-165px); }
-    }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
-    @keyframes driftFast {
-      from { transform: translateY(0); }
-      to   { transform: translateY(-235px); }
-    }
+  text-align: center;
+  padding: 120px 24px 80px;
+}
 
-    /* ===== CONTENT ===== */
-    main {
-      position: relative;
-      z-index: 2;
-      text-align: center;
-      padding: 32px;
-      max-width: 720px;
-    }
+main h1 {
+  font-size: 42px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
 
-    h1 {
-      margin: 0;
-      font-size: clamp(40px, 6vw, 64px);
-      line-height: 1.05;
-      letter-spacing: 0.12em;
-      font-weight: 600;
-      color: var(--white);
-      text-transform: uppercase;
-    }
+main p {
+  max-width: 640px;
+  margin-top: 18px;
+  font-size: 15px;
+  line-height: 1.7;
+  color: rgba(227, 240, 246, 0.75);
+}
 
-    .divider {
-      width: 72px;
-      height: 2px;
-      margin: 26px auto;
-      background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(227,240,246,0.85),
-        transparent
-      );
-    }
 
-    p {
-      margin: 0;
-      font-size: 15px;
-      line-height: 1.6;
-      color: rgba(227,240,246,0.78);
-    }
+/* --------------------------------------------------
+   Divider
+-------------------------------------------------- */
 
-    .whisper {
-      margin-top: 28px;
-      font-size: 12px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: rgba(227,240,246,0.55);
-    }
+.divider {
+  width: 48px;
+  height: 1px;
+  background: rgba(227, 240, 246, 0.45);
+  margin: 22px auto;
+}
 
-    footer {
-      position: fixed;
-      bottom: 20px;
-      left: 0;
-      right: 0;
-      text-align: center;
-      font-size: 11px;
-      color: rgba(227,240,246,0.45);
-      z-index: 2;
-    }
+
+/* --------------------------------------------------
+   Links inside content
+-------------------------------------------------- */
+
+main a {
+  color: rgba(227, 240, 246, 0.9);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(227, 240, 246, 0.4);
+}
+
+main a:hover {
+  border-bottom-color: rgba(227, 240, 246, 0.9);
+}
+
+
+/* --------------------------------------------------
+   Footer
+-------------------------------------------------- */
+
+footer {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: rgba(227, 240, 246, 0.4);
+  padding: 24px 0 18px;
+}
+
+
+/* --------------------------------------------------
+   Responsive tweaks
+-------------------------------------------------- */
+
+@media (max-width: 768px) {
+  .nav {
+    right: 16px;
+    gap: 18px;
+    font-size: 11px;
+  }
+
+  main h1 {
+    font-size: 32px;
+  }
+
+  main {
+    padding-top: 100px;
+  }
+}
