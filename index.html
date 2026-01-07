@@ -6,6 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Howling Warlocks Productions — site coming soon." />
 
+  <!-- Montserrat font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
     :root {
       --navy: #26314f;
@@ -22,10 +27,10 @@
     }
 
     body {
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      font-family: "Montserrat", system-ui, sans-serif;
       color: var(--mist);
 
-      /* Navy + Night background (no true black) */
+      /* Night + navy base */
       background:
         radial-gradient(
           900px 600px at 20% 15%,
@@ -46,20 +51,25 @@
       display: grid;
       place-items: center;
       overflow: hidden;
+      position: relative;
     }
 
-    /* subtle filmic texture */
+    /* Star / mist specks */
     body::before {
       content: "";
       position: fixed;
       inset: 0;
       pointer-events: none;
       background-image:
-        radial-gradient(circle at 30% 40%, rgba(255,255,255,0.05) 0 1px, transparent 2px),
-        radial-gradient(circle at 70% 60%, rgba(255,255,255,0.04) 0 1px, transparent 2px);
-      background-size: 280px 280px, 320px 320px;
-      opacity: 0.22;
-      mix-blend-mode: overlay;
+        radial-gradient(circle at 12% 18%, rgba(227,240,246,0.8) 0 1px, transparent 2px),
+        radial-gradient(circle at 28% 62%, rgba(227,240,246,0.6) 0 1px, transparent 2px),
+        radial-gradient(circle at 46% 34%, rgba(227,240,246,0.7) 0 1px, transparent 2px),
+        radial-gradient(circle at 63% 78%, rgba(227,240,246,0.5) 0 1px, transparent 2px),
+        radial-gradient(circle at 82% 21%, rgba(227,240,246,0.75) 0 1px, transparent 2px);
+
+      background-size: 100% 100%;
+      opacity: 0.35;
+      mix-blend-mode: screen;
     }
 
     main {
@@ -72,10 +82,12 @@
 
     h1 {
       margin: 0;
-      font-size: clamp(42px, 6vw, 64px);
+      font-size: clamp(40px, 6vw, 62px);
       line-height: 1.05;
-      letter-spacing: 0.03em;
+      letter-spacing: 0.08em;
+      font-weight: 600;
       color: var(--white);
+      text-transform: uppercase;
     }
 
     .divider {
@@ -85,24 +97,26 @@
       background: linear-gradient(
         90deg,
         transparent,
-        rgba(227,240,246,0.8),
+        rgba(227,240,246,0.85),
         transparent
       );
     }
 
     p {
       margin: 0;
-      font-size: 16px;
+      font-size: 15px;
       line-height: 1.6;
+      font-weight: 400;
       color: rgba(227,240,246,0.78);
     }
 
     .whisper {
       margin-top: 28px;
-      font-size: 13px;
-      letter-spacing: 0.14em;
+      font-size: 12px;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
       color: rgba(227,240,246,0.55);
+      font-weight: 500;
     }
 
     footer {
@@ -111,21 +125,23 @@
       left: 0;
       right: 0;
       text-align: center;
-      font-size: 12px;
+      font-size: 11px;
       color: rgba(227,240,246,0.45);
       z-index: 1;
+      font-weight: 400;
     }
   </style>
 </head>
 
 <body>
   <main>
-    <h1>Howling Warlocks<br/>Productions</h1>
+    <h1>Howling Warlocks<br>Productions</h1>
 
     <div class="divider"></div>
 
     <p>
-      An Atlanta-Based Film Production.<br />
+      An Atlanta-based film production.<br />
+      New work is gathering. The site will follow.
     </p>
 
     <div class="whisper">Coming soon</div>
