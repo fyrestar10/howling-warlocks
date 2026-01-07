@@ -1,0 +1,192 @@
+
+    :root {
+      --navy: #26314f;
+      --night: #0f1015;
+      --mist: #e3f0f6;
+      --white: #ffffff;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+
+    body {
+      font-family: "Montserrat", system-ui, sans-serif;
+      color: var(--mist);
+      background:
+        radial-gradient(1100px 800px at 18% 12%, rgba(38,49,79,0.95), transparent 60%),
+        radial-gradient(900px 700px at 82% 22%, rgba(227,240,246,0.16), transparent 65%),
+        linear-gradient(180deg, var(--navy), var(--night) 72%);
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* ===== STARFIELD ===== */
+
+    /* FAR STARS */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: -25%;
+      pointer-events: none;
+      background-image:
+        radial-gradient(circle at 4% 8%, rgba(227,240,246,0.55) 0 1px, transparent 2px),
+        radial-gradient(circle at 9% 28%, rgba(227,240,246,0.6) 0 1.25px, transparent 2px),
+        radial-gradient(circle at 14% 55%, rgba(227,240,246,0.5) 0 1px, transparent 2px),
+        radial-gradient(circle at 19% 78%, rgba(227,240,246,0.6) 0 1.25px, transparent 2px),
+
+        radial-gradient(circle at 26% 14%, rgba(227,240,246,0.55) 0 1px, transparent 2px),
+        radial-gradient(circle at 31% 42%, rgba(227,240,246,0.65) 0 1.5px, transparent 2px),
+        radial-gradient(circle at 36% 66%, rgba(227,240,246,0.55) 0 1px, transparent 2px),
+        radial-gradient(circle at 41% 86%, rgba(227,240,246,0.6) 0 1.25px, transparent 2px),
+
+        radial-gradient(circle at 48% 10%, rgba(227,240,246,0.6) 0 1.25px, transparent 2px),
+        radial-gradient(circle at 53% 34%, rgba(227,240,246,0.55) 0 1px, transparent 2px),
+        radial-gradient(circle at 58% 58%, rgba(227,240,246,0.6) 0 1.25px, transparent 2px),
+        radial-gradient(circle at 63% 82%, rgba(227,240,246,0.5) 0 1px, transparent 2px),
+
+        radial-gradient(circle at 70% 18%, rgba(227,240,246,0.65) 0 1.5px, transparent 2px),
+        radial-gradient(circle at 75% 44%, rgba(227,240,246,0.6) 0 1.25px, transparent 2px),
+        radial-gradient(circle at 80% 70%, rgba(227,240,246,0.55) 0 1px, transparent 2px),
+        radial-gradient(circle at 85% 90%, rgba(227,240,246,0.6) 0 1.25px, transparent 2px),
+
+        radial-gradient(circle at 92% 26%, rgba(227,240,246,0.55) 0 1px, transparent 2px),
+        radial-gradient(circle at 96% 52%, rgba(227,240,246,0.6) 0 1.25px, transparent 2px);
+
+      opacity: 0.45;
+      animation: driftSlow 110s linear infinite;
+    }
+
+    /* MID STARS */
+    body::after {
+      content: "";
+      position: fixed;
+      inset: -25%;
+      pointer-events: none;
+      background-image:
+        radial-gradient(circle at 8% 38%, rgba(227,240,246,0.8) 0 1.75px, transparent 3px),
+        radial-gradient(circle at 14% 18%, rgba(227,240,246,0.75) 0 1.5px, transparent 3px),
+        radial-gradient(circle at 20% 62%, rgba(227,240,246,0.85) 0 2px, transparent 3px),
+
+        radial-gradient(circle at 28% 28%, rgba(227,240,246,0.7) 0 1.5px, transparent 3px),
+        radial-gradient(circle at 34% 82%, rgba(227,240,246,0.9) 0 2px, transparent 3px),
+        radial-gradient(circle at 40% 48%, rgba(227,240,246,0.75) 0 1.5px, transparent 3px),
+
+        radial-gradient(circle at 48% 14%, rgba(227,240,246,0.85) 0 2px, transparent 3px),
+        radial-gradient(circle at 54% 66%, rgba(227,240,246,0.75) 0 1.75px, transparent 3px),
+        radial-gradient(circle at 60% 36%, rgba(227,240,246,0.8) 0 1.75px, transparent 3px),
+
+        radial-gradient(circle at 68% 76%, rgba(227,240,246,0.7) 0 1.5px, transparent 3px),
+        radial-gradient(circle at 74% 22%, rgba(227,240,246,0.85) 0 2px, transparent 3px),
+        radial-gradient(circle at 80% 54%, rgba(227,240,246,0.75) 0 1.75px, transparent 3px),
+
+        radial-gradient(circle at 88% 18%, rgba(227,240,246,0.8) 0 1.75px, transparent 3px),
+        radial-gradient(circle at 94% 72%, rgba(227,240,246,0.9) 0 2px, transparent 3px);
+
+      opacity: 0.35;
+      animation: driftMedium 75s linear infinite;
+    }
+
+    /* NEAR STARS */
+    .stars-near {
+      position: fixed;
+      inset: -25%;
+      pointer-events: none;
+      background-image:
+        radial-gradient(circle at 10% 58%, rgba(227,240,246,0.95) 0 2.25px, transparent 4px),
+        radial-gradient(circle at 18% 18%, rgba(227,240,246,0.85) 0 2px, transparent 4px),
+        radial-gradient(circle at 26% 72%, rgba(227,240,246,0.9) 0 2.25px, transparent 4px),
+
+        radial-gradient(circle at 36% 32%, rgba(227,240,246,0.8) 0 2px, transparent 4px),
+        radial-gradient(circle at 44% 88%, rgba(227,240,246,0.95) 0 2.25px, transparent 4px),
+
+        radial-gradient(circle at 54% 22%, rgba(227,240,246,0.85) 0 2px, transparent 4px),
+        radial-gradient(circle at 62% 62%, rgba(227,240,246,0.9) 0 2.25px, transparent 4px),
+
+        radial-gradient(circle at 72% 42%, rgba(227,240,246,0.8) 0 2px, transparent 4px),
+        radial-gradient(circle at 80% 78%, rgba(227,240,246,0.95) 0 2.25px, transparent 4px),
+
+        radial-gradient(circle at 90% 28%, rgba(227,240,246,0.85) 0 2px, transparent 4px);
+
+      opacity: 0.25;
+      animation: driftFast 50s linear infinite;
+      z-index: 0;
+    }
+
+    /* ===== PARALLAX ANIMATION ===== */
+    @keyframes driftSlow {
+      from { transform: translateY(0); }
+      to   { transform: translateY(-95px); }
+    }
+
+    @keyframes driftMedium {
+      from { transform: translateY(0); }
+      to   { transform: translateY(-165px); }
+    }
+
+    @keyframes driftFast {
+      from { transform: translateY(0); }
+      to   { transform: translateY(-235px); }
+    }
+
+    /* ===== CONTENT ===== */
+    main {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 32px;
+      max-width: 720px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(40px, 6vw, 64px);
+      line-height: 1.05;
+      letter-spacing: 0.12em;
+      font-weight: 600;
+      color: var(--white);
+      text-transform: uppercase;
+    }
+
+    .divider {
+      width: 72px;
+      height: 2px;
+      margin: 26px auto;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(227,240,246,0.85),
+        transparent
+      );
+    }
+
+    p {
+      margin: 0;
+      font-size: 15px;
+      line-height: 1.6;
+      color: rgba(227,240,246,0.78);
+    }
+
+    .whisper {
+      margin-top: 28px;
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(227,240,246,0.55);
+    }
+
+    footer {
+      position: fixed;
+      bottom: 20px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-size: 11px;
+      color: rgba(227,240,246,0.45);
+      z-index: 2;
+    }
