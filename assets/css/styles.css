@@ -53,7 +53,7 @@ body {
   opacity: 1;
 }
 
-/* Contact pill */
+/* Nav pill (use on whichever link is the "primary") */
 .nav .nav-cta {
   padding: 6px 14px;
   border: 1px solid rgba(255, 255, 255, 0.75);
